@@ -1,20 +1,19 @@
 {
   "name": "porla-pushbullet",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Viktor Elofsson <viktor@viktorelofsson.se>",
   "keywords": [
-      "porla-script",
-      "porla-pushbullet",
-      "pushbullet",
-      "porla"
+    "porla-script",
+    "porla-pushbullet",
+    "pushbullet",
+    "porla"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-      "porla": "0.x"
+    "porla": "0.x"
   },
   "peerDependencies": {
-      "porla": "0.x"
+    "porla": "0.x"
   },
   "main": "./src/index"
 }
