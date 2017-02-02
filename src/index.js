@@ -1,15 +1,15 @@
 const PushbulletClient = require('./pushbullet');
-const PORLA_PUSHBULLET_TOKEN = process.env.PORLA_PUSHBULLET_TOKEN || '';
 
 module.exports = (porla) => {
-    if (!PORLA_PUSHBULLET_TOKEN.trim()) {
-        porla.log('error', 'PORLA_PUSHBULLET_TOKEN environment variable not set.')
+    const token = porla.config.get([ 'pushbullet', 'access_token' ], '');
+
+    if (!token.trim()) {
+        porla.log('error', 'No Pushbullet access token configured.')
         return;
     }
 
-    const cfg = porla.config['pushbullet'] || {};
-    const client = new PushbulletClient(PORLA_PUSHBULLET_TOKEN);
-    const events = cfg['notify_events'] || [];
+    const client = new PushbulletClient(token);
+    const events = porla.config.get([ 'pushbullet', 'notify_events' ], []);
 
     client.on('error', (err) => {
         porla.log('error', 'Pushbullet client error: %s', err);
